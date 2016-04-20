@@ -1,0 +1,19 @@
+button.sme-button {
+  color: #DDDDEE;
+  background-color: #335599;
+}
+
+.sme-header {
+  color: #DDDDEE;
+  background-color: #888899;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.sme-search-detail {
+  color: #DDDDEE;
+  background-color: #9999BB;
+  padding: 200px;
+  margin-bottom: 5px;
+}
