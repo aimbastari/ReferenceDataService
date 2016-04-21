@@ -15,7 +15,8 @@ class SearchBar extends Component{
   onFormSubmit(event){
     event.preventDefault();
 
-    //fetch data from backend here
+    //fetch cusips from backend here
+    this.props.onSearchTermChange(this.state.term);
 
   }
 

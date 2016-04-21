@@ -13,12 +13,21 @@ export default class App extends Component {
 
   }
 
+  //Call the SME backend to get list of cusips
+  //Use the angio library
+  cusipSearch(term){
+
+
+
+  }
+
   render() {
     return (
       <div>
-        <div className='sme-header'>SME SEARCH</div>
-        <div><SearchBar /></div>
+        <div className='sme-header'>Swap Maintenance</div>
+        <div><SearchBar onSearchTermChange={term => this.cusipSearch(term)} /></div>
         <div className='sme-search-detail'><CusipList cusips={this.state.cusips}/></div>
+        <div>Swap Detail </div>
       </div>
     );
   }
