@@ -32,10 +32,9 @@ export default class App extends Component {
       .catch((response) => {
           console.log("Error fetching cusips!");
       });
-
   }
 
-  //Call the SME backend to get list of cusips
+  //Call the SME backend to get Swap from given cusips
   swapSearch(cusip){
     //Build request url
     const url = `${SWAP_CUSIP_API}/security/${cusip}`;
@@ -49,18 +48,31 @@ export default class App extends Component {
       .catch((response) => {
           console.log("Error fetching  Security!");
       });
-
   }
 
+  //Call the SME backend to post the swap update
+  swapSave(swap){
+    //Build request url
+    const url = `${SWAP_CUSIP_API}/security/${swap}`;
 
+    //make the request
+    const request = axios.post(url)
+      .then((response) => {
+        //setting state will trigger all components to rerender themselves
+        this.setState({swap: response});
+      })
+      .catch((response) => {
+          console.log("Error fetching  Security!");
+      });
+  }
 
   render() {
     return (
       <div>
-        <div className='sme-header'>Swap Maintenance</div>
-        <div><SearchBar onSearchTermChange={term => this.cusipSearch(term)} /></div>
-        <div><CusipList cusips={this.state.cusips} onCusip/></div>
-        <div className='sme-search-detail' onSwapChange><SwapDetail /></div>
+        <div className='sme-header'>SWAP MAINTENANCE</div>
+        <SearchBar onSearchTermChange={term => this.cusipSearch(term)} />
+        <CusipList cusips={this.state.cusips} onCusip/>
+        <SwapDetail swap={this.state.swap} onSwapChange={swap => this.swapSave(swap)}  />
       </div>
     );
   }

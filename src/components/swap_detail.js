@@ -22,7 +22,7 @@ class SwapDetail extends Component{
 
   render(){
     return (
-      <div>Swap Detail</div>
+      <div className='sme-swap-detail'>Swap Detail</div>
     );
   }
 }

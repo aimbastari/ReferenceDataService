@@ -22,7 +22,7 @@ class SearchBar extends Component{
 
   render(){
     return (
-      <form onSubmit={this.onFormSubmit} className="input-group">
+      <form onSubmit={this.onFormSubmit} className="input-group sme-search-bar">
         <input
           placeholder="Enter security cusip here....! "
           className="form-control"
