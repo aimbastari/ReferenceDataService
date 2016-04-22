@@ -1,10 +1,12 @@
 import React from 'react';
 import { Component } from 'react';
 import axios from 'axios';
+import Promise from 'es6-promise';
 
 import SearchBar from './search_bar';
 import CusipList from './cusip_list';
 import SwapDetail from './swap_detail';
+
 
 
 const SWAP_CUSIP_API = 'http://localhost:3000/api/';
@@ -27,15 +29,19 @@ export default class App extends Component {
     //Build request url
 //    const url = `${SWAP_CUSIP_API}cusip/${term}`;
     const url = `${SWAP_CUSIP_API}cusips`;
+    console.log(`CUSIP Search ${url}`);
 
     //make the request
     const request = axios.get(url)
       .then((response) => {
         //setting state will trigger all components to rerender themselves
-        this.setState({cusips: response});
+        console.log(`returned response ${response.data}`);
+        console.log(response);
+        this.setState({cusips: response.data});
       })
       .catch((response) => {
           console.log("Error fetching cusips!");
+          console.log(response);
       });
   }
 
@@ -76,7 +82,7 @@ export default class App extends Component {
       <div>
         <div className='sme-header'>SWAP MAINTENANCE EDITOR</div>
         <SearchBar onSearchTermChange={term => this.cusipSearch(term)} />
-        <CusipList cusips={this.state.cusips} onCusip={cusip => this.swapSearch(cusip)}/>
+        <CusipList cusips={this.state.cusips} onCusipSelect={cusip => this.swapSearch(cusip)}/>
         <SwapDetail swap={this.state.swap} onSwapSave={swap => this.swapSave(swap)}  />
       </div>
     );
