@@ -74,7 +74,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <div className='sme-header'>SWAP MAINTENANCE</div>
+        <div className='sme-header'>SWAP MAINTENANCE EDITOR</div>
         <SearchBar onSearchTermChange={term => this.cusipSearch(term)} />
         <CusipList cusips={this.state.cusips} onCusip={cusip => this.swapSearch(cusip)}/>
         <SwapDetail swap={this.state.swap} onSwapSave={swap => this.swapSave(swap)}  />
