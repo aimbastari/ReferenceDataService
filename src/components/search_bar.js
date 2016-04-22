@@ -6,6 +6,8 @@ class SearchBar extends Component{
     super(props);
     this.state = { term : ''};
     this.onInputChange = this.onInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+
   }
 
   onInputChange(event){
