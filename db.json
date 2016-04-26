@@ -1,0 +1,22 @@
+{
+  "cusips": [
+    {
+      "id": 1,
+      "cusip": "IBM"
+    },
+    {
+      "id": 2,
+      "cusip": "XYZ"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

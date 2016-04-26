@@ -34,3 +34,12 @@ var cusips = new fake.Resource("cusip")
     .register(cusips)
     .register(swaps)
     .listen(3000);
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}

@@ -9,14 +9,15 @@ import SwapDetail from './swap_detail';
 
 
 
-const SWAP_CUSIP_API = 'http://localhost:3000/api/';
+const SWAP_CUSIP_API = 'http://localhost:3000/'
+//http://localhost:3000/api/';
 
 
 export default class App extends Component {
 
   constructor(props){
     super(props);
-    this.state = {cusips: ['xyz1232xs', 'xyz12366', 'x1231233']};
+    this.state = {cusips: []};
 
     this.cusipSearch = this.cusipSearch.bind(this);
     this.swapSearch = this.swapSearch.bind(this);
@@ -31,13 +32,19 @@ export default class App extends Component {
     const url = `${SWAP_CUSIP_API}cusips`;
     console.log(`CUSIP Search ${url}`);
 
+   // create header
+   var config = {
+     headers: { 'Accept': 'application/json',
+    'Content-Type': 'application/json'}
+   };
+
     //make the request
-    const request = axios.get(url)
+    const request = axios.get(url, config)
       .then((response) => {
         //setting state will trigger all components to rerender themselves
-        console.log(`returned response ${response.data}`);
-        console.log(response);
-        this.setState({cusips: response.data});
+        //console.log(`returned response:');
+        console.log(response.data.json);//ex: 200
+        this.setState({cusips: response.data.json});
       })
       .catch((response) => {
           console.log("Error fetching cusips!");
