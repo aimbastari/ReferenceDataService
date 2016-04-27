@@ -17,7 +17,7 @@ export default class App extends Component {
 
   constructor(props){
     super(props);
-    this.state = {cusips: []};
+    this.state = {cusips: [], swap: null};
 
     this.cusipSearch = this.cusipSearch.bind(this);
     this.swapSearch = this.swapSearch.bind(this);
@@ -43,8 +43,8 @@ export default class App extends Component {
       .then((response) => {
         //setting state will trigger all components to rerender themselves
         //console.log(`returned response:');
-        console.log(response.data.json);//ex: 200
-        this.setState({cusips: response.data.json});
+        console.log(response.data);//ex: 200
+        this.setState({cusips: response.data});
       })
       .catch((response) => {
           console.log("Error fetching cusips!");
@@ -55,29 +55,31 @@ export default class App extends Component {
   //Call the SME backend to get Swap from given cusips
   swapSearch(cusip){
     //Build request url
-    const url = `${SWAP_CUSIP_API}/security/${cusip}`;
+    const url = `${SWAP_CUSIP_API}security/${cusip}`;
 
     //make the request
     const request = axios.get(url)
       .then((response) => {
+
         //setting state will trigger all components to rerender themselves
-        this.setState({swap: response});
+        console.log(response.data);//ex: 200
+        this.setState({swap: response.data});
       })
       .catch((response) => {
           console.log("Error fetching  Security!");
       });
   }
 
-  //Call the SME backend to post the swap update
+  //Call the SME backend to put the swap update
   swapSave(swap){
     //Build request url
     const url = `${SWAP_CUSIP_API}/security/${swap}`;
 
     //make the request
-    const request = axios.post(url)
+    const request = axios.put(url)
       .then((response) => {
         //setting state will trigger all components to rerender themselves
-        this.setState({swap: response});
+        this.setState({swap: response.data});
       })
       .catch((response) => {
           console.log("Error fetching  Security!");

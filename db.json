@@ -7,13 +7,17 @@
     {
       "id": 2,
       "cusip": "XYZ"
+    },
+    {
+      "id": 3,
+      "cusip": "CSCO"
     }
   ],
-  "comments": [
+  "security": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": "XYZ",
+      "coupon": 123456.9,
+      "description": "Swap XYZ"
     }
   ],
   "profile": {

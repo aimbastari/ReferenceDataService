@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class SwapDetail extends Component{
   constructor(props) {
     super(props);
-    this.state = { swap : {}};
+    this.state = { swap : null};
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
@@ -22,8 +22,14 @@ class SwapDetail extends Component{
   }
 
   render(){
+    console.log("inside swap detail");
+    console.log(this.props.swap);
+
     return (
-      <div className='sme-swap-detail'>Swap Detail</div>
+      <div>
+        <div className='sme-swap-detail'>Swap Detail: {this.props.swap}</div>
+        <button className="btn btn-small" onClick={onSwapSave(this.props.swap)}   >Submit</button>
+      </div>
     );
   }
 }
