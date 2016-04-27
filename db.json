@@ -11,13 +11,17 @@
     {
       "id": 3,
       "cusip": "CSCO"
+    },
+    {
+      "id": 4,
+      "cusip": "APPL"
     }
   ],
   "security": [
     {
-      "id": "XYZ",
-      "coupon": 123456.9,
-      "description": "Swap XYZ"
+      "description": "helpmeeeee",
+      "coupon": 2222,
+      "id": "XYZ"
     }
   ],
   "profile": {

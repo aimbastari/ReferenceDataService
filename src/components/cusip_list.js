@@ -1,10 +1,9 @@
 import React from 'react';
 
-
-
-
+/*
+  Represents a list of cusips
+*/
 const CusipList = (props) => {
-
   const cusipListItems = props.cusips.map( (cusip) => {
       return (
         <option  key={cusip.id}>

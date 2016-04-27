@@ -12,7 +12,9 @@ import SwapDetail from './swap_detail';
 const SWAP_CUSIP_API = 'http://localhost:3000/'
 //http://localhost:3000/api/';
 
-
+/*
+  Parent component for SME app
+*/
 export default class App extends Component {
 
   constructor(props){
@@ -25,25 +27,18 @@ export default class App extends Component {
 
   }
 
-  //Call the SME backend to get list of cusips
+  /*
+    Call the SME backend to get list of cusips
+  */
   cusipSearch(term){
     //Build request url
-//    const url = `${SWAP_CUSIP_API}cusip/${term}`;
+    //const url = `${SWAP_CUSIP_API}cusip/${term}`;
     const url = `${SWAP_CUSIP_API}cusips`;
-    console.log(`CUSIP Search ${url}`);
-
-   // create header
-   var config = {
-     headers: { 'Accept': 'application/json',
-    'Content-Type': 'application/json'}
-   };
 
     //make the request
-    const request = axios.get(url, config)
+    const request = axios.get(url)
       .then((response) => {
         //setting state will trigger all components to rerender themselves
-        //console.log(`returned response:');
-        console.log(response.data);//ex: 200
         this.setState({cusips: response.data});
       })
       .catch((response) => {
@@ -52,7 +47,9 @@ export default class App extends Component {
       });
   }
 
-  //Call the SME backend to get Swap from given cusips
+  /*
+    Call the SME backend to get Swap from selected cusip
+  */
   swapSearch(cusip){
     //Build request url
     const url = `${SWAP_CUSIP_API}security/${cusip}`;
@@ -60,29 +57,31 @@ export default class App extends Component {
     //make the request
     const request = axios.get(url)
       .then((response) => {
-
         //setting state will trigger all components to rerender themselves
-        console.log(response.data);//ex: 200
         this.setState({swap: response.data});
       })
       .catch((response) => {
-          console.log("Error fetching  Security!");
+          console.log("Error fetching Security!");
+          console.log(response);
       });
   }
 
-  //Call the SME backend to put the swap update
+  /*
+    Call the SME backend to update the swap
+  */
   swapSave(swap){
     //Build request url
-    const url = `${SWAP_CUSIP_API}/security/${swap}`;
+    const url = `${SWAP_CUSIP_API}security/${swap.id}`;
 
     //make the request
-    const request = axios.put(url)
+    const request = axios.put(url, swap)
       .then((response) => {
         //setting state will trigger all components to rerender themselves
         this.setState({swap: response.data});
       })
       .catch((response) => {
-          console.log("Error fetching  Security!");
+          console.log("Error Saving Security!");
+          console.log(response);
       });
   }
 

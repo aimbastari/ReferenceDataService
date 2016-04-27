@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-
+/*
+  Searchs for cusips. Performs a like search
+*/
 class SearchBar extends Component{
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class SearchBar extends Component{
   onFormSubmit(event){
     event.preventDefault();
 
-    //fetch cusips from backend here
+    //calls methos on the parent component
     this.props.onSearchTermChange(this.state.term);
 
   }
