@@ -47,31 +47,31 @@ class SwapDetail extends Component{
 
   render(){
     if(this.props.swap == null){
-      return <div> Swap detail... </div>;
+      return <div> Swap Detail... </div>;
     }
     return (
       <div>
-        <div>Swap detail:{this.props.swap.id}</div>
-        <form onSubmit={this.onFormSubmit} className="input-group sme-swap-detail">
-          <div>
-            <lable>description:</lable>
+        <div className="sme-swap-detail-title">Swap detail: {this.props.swap.id}</div>
+        <form onSubmit={this.onFormSubmit} className="sme-swap-detail" >
+          <div className="form-group">
+            <lable>Description:</lable>
             <input name='description' placeholder={this.props.swap.description}
               onChange={this.onChange}
               value={this.state.swap.description}
+              className="form-control"
             />
           </div>
 
-          <div>
-            <lable>coupon:</lable>
+          <div className="form-group">
+            <lable>Coupon:</lable>
             <input name='coupon' placeholder={this.props.swap.coupon}
               onChange={this.onChange}
               value={this.state.swap.coupon}
+              className="form-control"
             />
           </div>
 
-          <div className="input-group-btn">
-            <button type="submit" className="btn btn-secondary sme-button">Save</button>
-          </div>
+          <button type="submit" className="btn btn-primary swap-detail-button">Save</button>
         </form>
       </div>
     );

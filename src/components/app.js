@@ -39,11 +39,13 @@ export default class App extends Component {
     const request = axios.get(url)
       .then((response) => {
         //setting state will trigger all components to rerender themselves
-        this.setState({cusips: response.data});
+        this.setState({cusips: response.data, swap: {}});
       })
       .catch((response) => {
-          console.log("Error fetching cusips!");
-          console.log(response);
+        this.setState({cusips: [], swap: {}});
+
+        console.log("Error fetching cusips!");
+        console.log(response);
       });
   }
 
@@ -61,8 +63,11 @@ export default class App extends Component {
         this.setState({swap: response.data});
       })
       .catch((response) => {
-          console.log("Error fetching Security!");
-          console.log(response);
+        //clear the swap detail if search fails
+        this.setState({swap: {}});
+
+        console.log("Error fetching Security!");
+        console.log(response);
       });
   }
 
@@ -80,8 +85,8 @@ export default class App extends Component {
         this.setState({swap: response.data});
       })
       .catch((response) => {
-          console.log("Error Saving Security!");
-          console.log(response);
+        console.log("Error Saving Security!");
+        console.log(response);
       });
   }
 
