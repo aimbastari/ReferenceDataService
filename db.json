@@ -31,9 +31,14 @@
   ],
   "security": [
     {
-      "description": "hello goodbye",
+      "description": "That boy",
       "coupon": 1111,
       "id": "XYZ"
+    },
+    {
+      "description": "CSCO Kid Swap",
+      "coupon": 12,
+      "id": "CSCO"
     }
   ],
   "profile": {
