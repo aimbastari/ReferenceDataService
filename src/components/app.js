@@ -75,6 +75,11 @@ export default class App extends Component {
     Call the SME backend to update the swap
   */
   swapSave(swap){
+
+    if(swap == null){
+      this.setState({swap: null});
+        return;
+    }
     //Build request url
     const url = `${SWAP_CUSIP_API}security/${swap.id}`;
 

@@ -71,7 +71,9 @@ class SwapDetail extends Component{
             />
           </div>
 
-          <button type="submit" className="btn btn-primary swap-detail-button">Save</button>
+          <button  onClick={() => this.props.onSwapSave(null) } className="btn btn-primary btn-danger pull-xs-right swap-detail-button">Cancel</button>
+          <button type="submit" className="btn btn-primary pull-xs-right swap-detail-button">Save</button>
+
         </form>
       </div>
     );
